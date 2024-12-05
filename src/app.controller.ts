@@ -1,13 +1,28 @@
-import { Controller, Get } from "@nestjs/common";
+import core from "@nestia/core";
+import { Controller } from "@nestjs/common";
 
 import { AppService } from "./app.service";
+import { CCGlobal } from "./cc-global";
+import { diffDateString } from "./utils/functions/diff-date-string";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  private readonly bootTime = new Date();
+  private mode: string = CCGlobal.env.NODE_ENV;
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  constructor() {}
+
+  @core.TypedRoute.Get("health_check")
+  async healthCheck() {
+    const curTime = new Date();
+
+    return {
+      message: "I am OK! Have a nice day!!!",
+      mode: this.mode,
+      bootTime: this.bootTime,
+      serverTime: curTime.toISOString(),
+      uptime: diffDateString(curTime.getTime() - this.bootTime.getTime()),
+      version: process.env.npm_package_version,
+    };
   }
 }

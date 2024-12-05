@@ -13,6 +13,10 @@ export class CCBackend {
   public async open(): Promise<void> {
     this.application_ = await NestFactory.create(AppModule);
 
+    this.application_.setGlobalPrefix("/api", {
+      exclude: ["/health_check"],
+    });
+
     this.application_.enableCors();
 
     await this.application_.listen(Configuration.API_PORT(), "0.0.0.0");

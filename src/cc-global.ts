@@ -11,6 +11,8 @@ export class CCGlobal {
 
 export namespace CCGlobal {
   export interface IEnvironments {
+    NODE_ENV: "dev" | "prod" | "test";
+
     API_PORT: `${number}`;
 
     // Zipkin
