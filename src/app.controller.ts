@@ -1,7 +1,6 @@
 import core from "@nestia/core";
 import { Controller } from "@nestjs/common";
 
-import { AppService } from "./app.service";
 import { CCGlobal } from "./cc-global";
 import { diffDateString } from "./utils/functions/diff-date-string";
 
