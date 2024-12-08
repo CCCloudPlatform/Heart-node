@@ -11,9 +11,12 @@ export class CCGlobal {
 
 export namespace CCGlobal {
   export interface IEnvironments {
-    NODE_ENV: "dev" | "prod" | "test";
+    NODE_ENV: "local" | "dev" | "prod" | "test";
 
     API_PORT: `${number}`;
+
+    // JWT
+    USER_INFO_JWT_SECRET: string;
 
     // Zipkin
     ZIPKIN_URL: string;

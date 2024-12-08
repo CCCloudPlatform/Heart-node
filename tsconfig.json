@@ -24,6 +24,10 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
 
+    "paths": {
+      "@CCPlatform/*": ["./src/*"]
+    },
+
     "plugins": [
       {
         "transform": "@nestia/core/lib/transform",
@@ -55,6 +59,9 @@
       },
       {
         "transform": "typia/lib/transform"
+      },
+      {
+        "transform": "typescript-transform-paths"
       }
     ]
   },
