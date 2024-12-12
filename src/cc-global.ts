@@ -21,6 +21,12 @@ export namespace CCGlobal {
     // Zipkin
     ZIPKIN_URL: string;
     ZIPKIN_SERVICE: string;
+
+    // Openstack
+    OPENSTACK_USER_NAME: string;
+    OPENSTACK_PASSWORD: string;
+    OPENSTACK_AUTH_URL: string;
+    OPENSTACK_DOMAIN: string;
   }
 }
 

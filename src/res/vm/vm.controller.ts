@@ -1,12 +1,18 @@
+import { CCGlobal } from "@CCPlatform/cc-global";
 import { VMRequest } from "@CCPlatform/dtos/vm/vm-request.dto";
 import { VMResponse } from "@CCPlatform/dtos/vm/vm-response.dto";
 import {
   User,
   UserDecoratorType,
 } from "@CCPlatform/middlewares/decorators/user.decorator";
+import {
+  OpenstackRequest,
+  OpenstackResponse,
+} from "@CCPlatform/utils/types/auth/openstack";
 import core from "@nestia/core";
 import { Controller } from "@nestjs/common";
-import { tags } from "typia";
+import axios from "axios";
+import typia, { tags } from "typia";
 import { v4 as uuidv4 } from "uuid";
 
 import { VMService } from "./vm.service";
@@ -19,13 +25,18 @@ export class VMController {
    * Virtual Machine을 생성한다.
    * @tag VM
    * @summary VM 생성 API
-   * @security userInfo
    */
   @core.TypedRoute.Post("create")
   async createVM(
     @core.TypedBody() body: VMRequest.Body.CreateVM,
     @User() user: UserDecoratorType,
   ): Promise<VMResponse.CreateVM> {
+    try {
+      const res = await this.vmService.createVM(body);
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
     return {
       id: uuidv4(),
       host: "host",
