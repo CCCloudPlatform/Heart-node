@@ -24,4 +24,8 @@ export class AppController {
       version: process.env.npm_package_version,
     };
   }
+
+  async a() {
+    console.log("hi")
+  }
 }
