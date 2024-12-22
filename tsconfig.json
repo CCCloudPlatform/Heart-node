@@ -52,7 +52,7 @@
          *   - "stringify": Use typia.stringify() function, but dangerous
          *   - null: Just use JSON.stringify() function, without boosting
          */
-        "stringify": "assert"
+        "stringify": "validate.log"
       },
       {
         "transform": "@nestia/sdk/lib/transform"

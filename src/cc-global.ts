@@ -27,6 +27,7 @@ export namespace CCGlobal {
     OPENSTACK_PASSWORD: string;
     OPENSTACK_AUTH_URL: string;
     OPENSTACK_DOMAIN: string;
+    OPENSTACK_PROJECT_NAME: string;
   }
 }
 
